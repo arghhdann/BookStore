@@ -72,9 +72,8 @@ class Shop extends Component
     public function update(){
         // Validate request
         $this->validate();
-        // dd($this->shop_id);
         try{
-            // Update category
+            // Update shop
             ModelsShop::find($this->shop_id)->fill([
                 'name'=>$this->name,
                 'location'=>$this->location,
@@ -84,7 +83,7 @@ class Shop extends Component
     
             $this->cancel();
         }catch(\Exception $e){
-            session()->flash('error','Something goes wrong while updating category!!');
+            session()->flash('error','Something goes wrong while updating shop!!');
             $this->cancel();
         }
     }
@@ -97,7 +96,7 @@ class Shop extends Component
             }
             session()->flash('success',"Shop Deleted Successfully!!");
         }catch(\Exception $e){
-            session()->flash('error',"Something goes wrong while deleting category!!");
+            session()->flash('error',"Something goes wrong while deleting shop!!");
         }
     }
 

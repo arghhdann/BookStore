@@ -78,10 +78,8 @@ class Book extends Component
         $this->resetFields();
     }
     public function update(){
-        // Validate request
-        $this->validate();
         try{
-            // Update category
+            // Update book
             ModelsBook::find($this->book_id)->fill([
                 'title'=>$this->title,
                 'author'=>$this->author,
@@ -91,16 +89,17 @@ class Book extends Component
     
             $this->cancel();
         }catch(\Exception $e){
-            session()->flash('error','Something goes wrong while updating category!!');
+            session()->flash('error','Something goes wrong while updating book!!');
             $this->cancel();
         }
     }
+    
     public function destroy($id){
         try{
             ModelsBook::find($id)->delete();
             session()->flash('success',"Book Deleted Successfully!!");
         }catch(\Exception $e){
-            session()->flash('error',"Something goes wrong while deleting category!!");
+            session()->flash('error',"Something goes wrong while deleting book!!");
         }
     }
 }
