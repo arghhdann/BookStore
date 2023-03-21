@@ -62,6 +62,7 @@
 
         </div>
 
+    </div>
     <div class="row">
         <div class="col-md-12" style="padding-top: 1%; align:center">
         @if (session()->has('message'))
@@ -71,6 +72,5 @@
         </div>
     </div>
     @endif
-    </div>
 </form>
 

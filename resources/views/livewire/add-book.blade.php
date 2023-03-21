@@ -74,23 +74,22 @@
             </div>
         </div>
 
-        <div class="row">
+
+
         <div class="col-md-12" style="padding-top: 1%">
-            <button type="submit" class="btn btn-success btn-block">Submit</button>
+
+            <button type="submit" class="m-auto btn btn-primary btn-outline-primary badge-pill btn-block w-75" style="background: #23a6d5 !important;">Submit</button>
+
         </div>
 
-        <div class="row">
-            <div class="col-md-12" style="padding-top: 1%">
-                @if (session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="padding-top: 1%; align:center">
+        @if (session()->has('message'))
+            <div class="alert alert-success">
+             {{ session('message') }}
             </div>
         </div>
-        @endif
     </div>
-
-
-
-    </div>
+    @endif
 </form>
