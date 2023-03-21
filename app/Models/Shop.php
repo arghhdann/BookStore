@@ -13,6 +13,7 @@ class Shop extends Model
         'name',
         'location',
         'description',
+        'user_id'
     ];
 
     public function book()

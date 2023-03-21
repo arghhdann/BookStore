@@ -8,13 +8,15 @@ use Livewire\Component;
 
 class Shop extends Component
 {
-    public $name, $location, $description, $shops, $shop_id;
+    public $name, $location, $description, $shops, $shop_id,$user_id;
     public $updateShop = false , $createform = false;
+
+
 
     protected $listeners = [
         'deleteCategory'=>'destroy'
     ];
-    
+
     public function render()
     {
         $this->shops = ModelsShop::get();
@@ -38,11 +40,13 @@ class Shop extends Component
 
     {
         $this->validate();
-        
+        $this->user_id = auth()->user()->id;
+
         $shop = ModelsShop::create([
             'name'=> $this->name,
             'location' => $this->location,
             'description' => $this->description,
+            'user_id' => $this->user_id,
 
         ]);
         $this->resetFields();
@@ -55,7 +59,7 @@ class Shop extends Component
         $this->description = '';
 
     }
-    
+
     public function edit($id){
         $shop = ModelsShop::findOrFail($id);
         $this->name = $shop->name;
@@ -80,7 +84,7 @@ class Shop extends Component
                 'description'=>$this->description
             ])->save();
             session()->flash('success','Shop Updated Successfully!!');
-    
+
             $this->cancel();
         }catch(\Exception $e){
             session()->flash('error','Something goes wrong while updating shop!!');
